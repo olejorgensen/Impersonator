@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Impersonator", "Impersonator.csproj", "{227151AE-2CF5-42F0-A736-814A4361E0BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{227151AE-2CF5-42F0-A736-814A4361E0BE}.Debug|Default.ActiveCfg = Debug|Any CPU
+		{227151AE-2CF5-42F0-A736-814A4361E0BE}.Debug|Default.Build.0 = Debug|Any CPU
+		{227151AE-2CF5-42F0-A736-814A4361E0BE}.Release|Default.ActiveCfg = Release|Any CPU
+		{227151AE-2CF5-42F0-A736-814A4361E0BE}.Release|Default.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
