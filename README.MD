@@ -1,4 +1,5 @@
-﻿Impersonation of a user. 
+
+Impersonation of a user. 
 
 Allows to execute code under another user context.
 The account that instantiates the Impersonator class must have the 
