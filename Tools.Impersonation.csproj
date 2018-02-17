@@ -89,18 +89,9 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
-    <Reference Include="System.Data">
-      <Name>System.Data</Name>
-    </Reference>
-    <Reference Include="System.XML">
-      <Name>System.XML</Name>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Impersonator.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Program.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

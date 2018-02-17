@@ -21,9 +21,18 @@ namespace Tools.Impersonation
             ImpersonateValidUser(userName, domainName, password);
         }
 
+        protected void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                impersonationContext?.Undo();
+            }
+        }
+
         public void Dispose()
         {
-            impersonationContext?.Undo();
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         #region WinAPI
