@@ -14,25 +14,8 @@ namespace Core112
     /////////////////////////////////////////////////////////////////////////
 
     /// <summary>
-    /// Impersonation of a user. Allows to execute code under another
-    /// user context.
-    /// Please note that the account that instantiates the Impersonator class
-    /// needs to have the 'Act as part of operating system' privilege set.
+    /// Execute code under another user context.
     /// </summary>
-    /// <remarks>	
-    /// This class is based on the information in the Microsoft knowledge base
-    /// article http://support.microsoft.com/default.aspx?scid=kb;en-us;Q306158
-    /// 
-    /// Encapsulate an instance into a using-directive like e.g.:
-    /// 
-    ///		using (new Impersonator( "myUsername", "myDomainname", "myPassword"))
-    ///		{
-    ///			[code that executes under the new context]
-    ///		}
-    /// 
-    /// Please contact the author Uwe Keim (mailto:uwe.keim@zeta-software.de)
-    /// for questions regarding this class.
-    /// </remarks>
     public class Impersonator :
         IDisposable
     {
