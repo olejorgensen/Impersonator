@@ -24,8 +24,6 @@ namespace Core112
 
         /// <summary>
         /// Constructor. Starts the impersonation with the given credentials.
-        /// Please note that the account that instantiates the Impersonator class
-        /// needs to have the 'Act as part of operating system' privilege set.
         /// </summary>
         /// <param name="userName">The name of the user to act as.</param>
         /// <param name="domainName">The domain name of the user to act as.</param>
@@ -89,9 +87,6 @@ namespace Core112
         /// <summary>
         /// Does the actual impersonation.
         /// </summary>
-        /// <param name="userName">The name of the user to act as.</param>
-        /// <param name="domain">The domain name of the user to act as.</param>
-        /// <param name="password">The password of the user to act as.</param>
         private void ImpersonateValidUser(
             string userName,
             string domain,
