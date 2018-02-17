@@ -1,5 +1,7 @@
+## Impersonation
 
-Impersonation of a user -  execute code under another user context.
+Execute code under another user context.
+
 The account that instantiates the Impersonator class must have the 
 'Act as part of operating system' privilege set.
 

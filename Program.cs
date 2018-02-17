@@ -1,20 +1,12 @@
 using System;
 using System.IO;
-using Core112;
 
-namespace ImpersonatorDemo
+namespace Tools.Impersonation.Test
 {
-    /// <summary>
-    /// Main class for the demo application.
-    /// Call this application with a low privileg account to test.
-    /// </summary>
-    class Program
+    internal class Program
     {
-        /// <summary>
-        /// The main entry point.
-        /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Impersonate, automatically release the impersonation.
             using (new Impersonator("yourUsername", "yourDomain", "yourPassword"))

@@ -1,15 +1,14 @@
-namespace Core112
+namespace Tools.Impersonation
 {
     using System;
-    using System.Security.Principal;
-    using System.Runtime.InteropServices;
     using System.ComponentModel;
+    using System.Runtime.InteropServices;
+    using System.Security.Principal;
 
     /// <summary>
     /// Execute code under another user context.
     /// </summary>
-    public class Impersonator :
-        IDisposable
+    public class Impersonator : IDisposable
     {
         /// <summary>
         /// Constructor. Starts the impersonation with the given credentials.
@@ -17,17 +16,14 @@ namespace Core112
         /// <param name="userName">The name of the user to act as.</param>
         /// <param name="domainName">The domain name of the user to act as.</param>
         /// <param name="password">The password of the user to act as.</param>
-        public Impersonator(
-            string userName,
-            string domainName,
-            string password)
+        public Impersonator(string userName, string domainName, string password)
         {
             ImpersonateValidUser(userName, domainName, password);
         }
 
         public void Dispose()
         {
-            UndoImpersonation();
+            impersonationContext?.Undo();
         }
 
         #region WinAPI
@@ -58,7 +54,7 @@ namespace Core112
         private const int LOGON32_PROVIDER_DEFAULT = 0;
 
         #endregion
-        
+
         private WindowsImpersonationContext impersonationContext;
 
         /// <summary>
@@ -105,24 +101,9 @@ namespace Core112
             finally
             {
                 if (token != IntPtr.Zero)
-                {
                     CloseHandle(token);
-                }
                 if (tokenDuplicate != IntPtr.Zero)
-                {
                     CloseHandle(tokenDuplicate);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Reverts the impersonation.
-        /// </summary>
-        private void UndoImpersonation()
-        {
-            if (impersonationContext != null)
-            {
-                impersonationContext.Undo();
             }
         }
     }
