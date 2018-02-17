@@ -1,17 +1,9 @@
 namespace Core112
 {
-    #region Using directives.
-    // ----------------------------------------------------------------------
-
     using System;
     using System.Security.Principal;
     using System.Runtime.InteropServices;
     using System.ComponentModel;
-
-    // ----------------------------------------------------------------------
-    #endregion
-
-    /////////////////////////////////////////////////////////////////////////
 
     /// <summary>
     /// Execute code under another user context.
@@ -19,9 +11,6 @@ namespace Core112
     public class Impersonator :
         IDisposable
     {
-        #region Public methods.
-        // ------------------------------------------------------------------
-
         /// <summary>
         /// Constructor. Starts the impersonation with the given credentials.
         /// </summary>
@@ -36,22 +25,12 @@ namespace Core112
             ImpersonateValidUser(userName, domainName, password);
         }
 
-        // ------------------------------------------------------------------
-        #endregion
-
-        #region IDisposable member.
-        // ------------------------------------------------------------------
-
         public void Dispose()
         {
             UndoImpersonation();
         }
 
-        // ------------------------------------------------------------------
-        #endregion
-
-        #region P/Invoke.
-        // ------------------------------------------------------------------
+        #region WinAPI
 
         [DllImport("advapi32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         private static extern int LogonUser(
@@ -78,19 +57,14 @@ namespace Core112
         private const int LOGON32_LOGON_INTERACTIVE = 2;
         private const int LOGON32_PROVIDER_DEFAULT = 0;
 
-        // ------------------------------------------------------------------
         #endregion
-
-        #region Private member.
-        // ------------------------------------------------------------------
+        
+        private WindowsImpersonationContext impersonationContext;
 
         /// <summary>
         /// Does the actual impersonation.
         /// </summary>
-        private void ImpersonateValidUser(
-            string userName,
-            string domain,
-            string password)
+        private void ImpersonateValidUser(string userName, string domain, string password)
         {
             WindowsIdentity tempWindowsIdentity = null;
             IntPtr token = IntPtr.Zero;
@@ -151,10 +125,5 @@ namespace Core112
                 impersonationContext.Undo();
             }
         }
-
-        private WindowsImpersonationContext impersonationContext = null;
-
-        // ------------------------------------------------------------------
-        #endregion
     }
 }
